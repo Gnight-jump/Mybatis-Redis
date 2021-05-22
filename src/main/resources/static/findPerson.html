@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寻找Person</title>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn").click(function () {
+                var inp =$("#in_put").val();
+                var din="pid="+inp;
+                $.ajax({
+                    url:"http://localhost:8080/SfindPerson",
+                    data:din,
+                    type:"GET",
+                    success:function (msg) {
+                        var person = jQuery.parseJSON(msg);
+                        $("#show").html("id ->"+person.pid+" && name="+person.pname+" && sex="+person.psex);
+                        //document.getElementById("show").innerText=msg;
+                    },
+                    dataType:"text"
+                });
+            });
+            $("#btn_2").click(function () {
+                var inp =$("#in_put").val();
+                var din="pid="+inp;
+                $.ajax({
+                    url:"http://localhost:8080/selectAllperson",
+                    data:din,
+                    type:"GET",
+                    success:function (msg) {
+                        var person = jQuery.parseJSON(msg);
+                        $("#show_2").html(msg);
+
+                    },
+                    dataType:"text"
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>点击获取id的信息</h1>
+<input type="text" id="in_put">
+<input type="submit" id="btn">
+<div id="show"></div>
+
+<h1>点击获取全部id的信息</h1>
+<input type="submit" id="btn_2">
+<div id="show_2"></div>
+
+</body>
+</html>
