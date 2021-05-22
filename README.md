@@ -3,7 +3,7 @@
 #### 介绍
 Mybatis结合redis，从数据库查询到的数据会存入redis，下次直接从redis读取
 
-需要先配置自己的数据库和redis
+需要先配置自己的数据库和redis，sql数据结构在resource中，先运行
 
 #### 软件架构
 ```java
